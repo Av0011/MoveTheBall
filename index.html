@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move The Ball</title>
+    <style>
+        #Ball{
+            background-color: aqua;
+            border-radius: 50%;
+            height: 150px;
+            width:150px;
+            position:absolute;
+            left : 50px;
+            top: 50px;
+            
+        }
+        body{
+            background-color: rgb(147, 86, 205);
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center;background-color: black;color: white; height: 20px;border-radius: 10px;">Use 'd' or right arrow key -> Right, 'a' or left arrow key -> Left, 'w' or up arrow key -> Up and 's' or down arrow key -> Down </div>
+    <div id="Ball"></div> 
+
+    <script>
+        let ball = document.getElementById("Ball");
+    document.addEventListener("keydown",moveBall);
+    let left =50 ;
+    t = 50;
+
+    function moveBall(event)
+    {
+        let elementW = ball.offsetWidth;
+        let browserW = document.documentElement.clientWidth;
+        let browserH = document.documentElement.clientHeight;
+
+
+        let key = event.keyCode;
+        if(key == 68 || key == 39) // to move right d
+            {
+                if(left+elementW+10<=browserW)
+                {
+                    ball.style.left = left+10+"px";
+                    left +=10;
+                    var audio = new Audio('cartoon-jump.mp3');
+                    audio.play();
+                    ball.style.backgroundColor = 'aqua';
+                }
+                else {
+                    ball.style.left = browserW-elementW + "px";
+                    ball.style.backgroundColor = 'red';
+                    var audio = new Audio('Wrong_sound.mp3');
+                    audio.play();
+                    
+                }
+
+            }
+        else if(key == 83|| key == 40) //to move down s
+            {
+                if(t+elementW+10<=browserH)
+                {
+                    ball.style.top = t+10+"px";
+                    t+=10;
+                    var audio = new Audio('cartoon-jump.mp3');
+                    audio.play();
+                    ball.style.backgroundColor = 'aqua';
+                }
+                else {
+                    ball.style.top = browserH-elementW + "px";
+                    ball.style.backgroundColor = 'red';
+                    var audio = new Audio('Wrong_sound.mp3');
+                    audio.play();
+                }
+
+            }
+        else if(key == 87 || key == 38) // to move up w
+            {
+                if(t-10>=21)
+                {
+                    ball.style.top = t -10 + "px";
+                    t-=10;
+                    var audio = new Audio('cartoon-jump.mp3');
+                    audio.play();
+                    ball.style.backgroundColor = 'aqua';
+                }
+                else{
+                    ball.style.backgroundColor = 'red';
+                    var audio = new Audio('Wrong_sound.mp3');
+                    audio.play();
+                }
+
+            }
+        else if(key == 65 || key == 37) // to move left a
+            {
+                if(left-10>=0)
+                {
+                    ball.style.left = left-10+"px";
+                    left-=10;
+                    var audio = new Audio('cartoon-jump.mp3');
+                    audio.play();
+                    ball.style.backgroundColor = 'aqua';
+                }else{
+                    ball.style.backgroundColor = 'red';
+                    var audio = new Audio('Wrong_sound.mp3');
+                    audio.play();
+                }
+
+            }
+    }
+    </script>
+</body>
+</html>
