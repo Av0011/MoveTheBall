@@ -3,12 +3,16 @@ let ball = document.getElementById("Ball");
     let left =50 ;
     t = 50;
 
+    
+
     function moveBall(event)
     {
         let elementW = ball.offsetWidth;
         let browserW = document.documentElement.clientWidth;
         let browserH = document.documentElement.clientHeight;
-
+        
+        let inst = document.getElementById('instruction');
+        let inst_height = inst.offsetHeight;
 
         let key = event.keyCode;
         if(key == 68 || key == 39) // to move right d
@@ -50,7 +54,7 @@ let ball = document.getElementById("Ball");
             }
         else if(key == 87 || key == 38) // to move up w
             {
-                if(t-10>=21)
+                if(t-10>=inst_height+1)
                 {
                     ball.style.top = t -10 + "px";
                     t-=10;
